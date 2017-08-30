@@ -1,0 +1,123 @@
+# GIMP sessionrc
+# 
+# This file takes session-specific info (that is info, you want to keep
+# between two GIMP sessions).  You are not supposed to edit it manually, but
+# of course you can do.  The sessionrc will be entirely rewritten every time
+# you quit GIMP.  If this file isn't found, defaults are used.
+
+(session-info "toplevel"
+    (factory-entry "gimp-empty-image-window")
+    (position 0 34)
+    (size 1366 734))
+(session-info "toplevel"
+    (factory-entry "gimp-single-image-window")
+    (position 10 26)
+    (size 1342 728)
+    (open-on-exit)
+    (aux-info
+        (left-docks-width "77")
+        (right-docks-width "208")
+        (maximized "no"))
+    (gimp-toolbox
+        (side left))
+    (gimp-dock
+        (side right)
+        (book
+            (current-page 0)
+            (dockable "gimp-layer-list"
+                (tab-style automatic)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-channel-list"
+                (tab-style automatic)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-vectors-list"
+                (tab-style automatic)
+                (preview-size 32)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-undo-history"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-gradient-editor"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")
+                    (edit-active "true")
+                    (current-data "FG to BG (RGB)"))))
+        (book
+            (position 274)
+            (current-page 3)
+            (dockable "gimp-pattern-grid"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-brush-grid"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-gradient-list"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-tool-options"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-brush-editor"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "false")
+                    (edit-active "true")
+                    (current-data "2. Hardness 050"))))))
+(session-info "toplevel"
+    (factory-entry "gimp-toolbox-color-dialog")
+    (position 0 0))
+(session-info "toplevel"
+    (factory-entry "gimp-image-new-dialog")
+    (position 377 276))
+(session-info "toplevel"
+    (factory-entry "gimp-file-open-dialog")
+    (position 183 130)
+    (size 840 630))
+(session-info "toplevel"
+    (factory-entry "gimp-file-save-dialog")
+    (position 217 280)
+    (size 840 630))
+(session-info "toplevel"
+    (factory-entry "gimp-preferences-dialog")
+    (position 239 14))
+(session-info "toplevel"
+    (factory-entry "gimp-file-export-dialog")
+    (position 364 76)
+    (size 840 630))
+(session-info "toplevel"
+    (factory-entry "gimp-scale-tool-dialog")
+    (position 962 546))
+(session-info "toplevel"
+    (factory-entry "gimp-text-tool-dialog")
+    (position 608 195)
+    (size 406 311))
+(session-info "toplevel"
+    (factory-entry "gimp-color-balance-tool-dialog")
+    (position 776 148))
+(session-info "toplevel"
+    (factory-entry "gimp-keyboard-shortcuts-dialog")
+    (position 343 81)
+    (size 519 665))
+(session-info "toplevel"
+    (factory-entry "gimp-rotate-tool-dialog")
+    (position 0 0))
+(session-info "toplevel"
+    (factory-entry "gimp-hue-saturation-tool-dialog")
+    (position 932 40))
+
+(hide-docks no)
+(single-window-mode yes)
+(last-tip-shown 0)
+
+# end of sessionrc

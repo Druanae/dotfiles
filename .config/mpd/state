@@ -1,0 +1,106 @@
+sw_volume: 100
+audio_device_state:1:default
+audio_device_state:1:my_fifo
+state: pause
+current: 39
+time: 80.387000
+random: 1
+repeat: 1
+single: 0
+consume: 0
+crossfade: 2
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Agnes Obel/Agnes Obel - 2010 - Philharmonics [FLAC]/01 - Falling, Catching.flac
+1:Agnes Obel/Agnes Obel - 2010 - Philharmonics [FLAC]/02 - Riverside.flac
+2:Agnes Obel/Agnes Obel - 2010 - Philharmonics [FLAC]/11 - Over The Hill.flac
+3:Alvaro Soler/Alvaro Soler - Eterno Agosto (2015) .flac/01. El Mismo Sol.flac
+4:Cœur De Pirate/Cœur de pirate - Blonde (French Deluxe)[FLAC]/01 Lève les voiles.flac
+5:Cœur De Pirate/Cœur de pirate - Blonde (French Deluxe)[FLAC]/07 Les amours dévouées.flac
+6:Cœur De Pirate/Cœur de pirate - Blonde (French Deluxe)[FLAC]/12 La petite mort.flac
+7:Cœur De Pirate/Coeur de Pirate - Roses - CD - FLAC - 2015/03 - I Don't Want to Break Your Heart.flac
+8:Cœur De Pirate/VA-Les.Souliers.Rouges-CD-FLAC-2016/01 - Marc Lavoine - Rêve d' opéra.flac
+9:Cœur De Pirate/VA-Les.Souliers.Rouges-CD-FLAC-2016/03 - Coeur De Pirate - Nijinsky.flac
+10:Cœur De Pirate/VA-Les.Souliers.Rouges-CD-FLAC-2016/07 - Coeur De Pirate - Les ailes des anges.flac
+11:Cœur De Pirate/VA-Les.Souliers.Rouges-CD-FLAC-2016/08 - Coeur De Pirate, Marc Lavoine - Je tombe amoureux.flac
+12:Dario Marianelli/Dario Marianelli - Kubo And The Two Strings - Original Motion Picture Soundtrack (2016) {Warner Bros. 556454-2} - [FLAC]/16 While My Guitar Gently Weeps.flac
+13:Gorillaz/Gorillaz - 2001 - Gorillaz/05 - Clint Eastwood.flac
+14:Gorillaz/Gorillaz - 2001 - Gorillaz/10 - Rock The House (Rock Da House).flac
+15:Gorillaz/Gorillaz - 2001 - Gorillaz/11 - 19-2000.flac
+16:Gorillaz/Gorillaz - Demon Days (2005) FLAC/05 - Dirty Harry.flac
+17:Gorillaz/Gorillaz - Demon Days (2005) FLAC/06 - Feel Good Inc..flac
+18:Gorillaz/Gorillaz - Demon Days (2005) FLAC/12 - DARE.flac
+19:Gorillaz/Gorillaz - Demon Days (2005) FLAC/15 - Demon Days.flac
+20:Gorillaz/Gorillaz - Humanz Deluxe Edition (2017) [FLAC] {0190295851170}/03 Strobelite (feat. Peven Everett).flac
+21:Gorillaz/Gorillaz - Humanz Deluxe Edition (2017) [FLAC] {0190295851170}/17 She's My Collar (feat. Kali Uchis).flac
+22:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/01 - Some Thing's Coming.flac
+23:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/02 - Daydream in Blue.flac
+24:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/03 - Hey Mrs..flac
+25:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/04 - Everyone's a Loser.flac
+26:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/05 - Heaven.flac
+27:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/06 - Who Is She.flac
+28:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/07 - I Missed You So.flac
+29:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/08 - Stobart's Blues.flac
+30:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/09 - The Backseat of My Car.flac
+31:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/10 - A Scarecrow's Tale.flac
+32:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/11 - These Are Our Children.flac
+33:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/12 - The Blue Wrath.flac
+34:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/13 - Sunny Delights.flac
+35:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/14 - Cells.flac
+36:I Monster/I Monster - Neveroddoreven (2003) [FLAC]/15 - Big End - Lucifer.flac
+37:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/01 - Magic.flac
+38:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/02 - Manipulating Woman.flac
+39:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/03 - My Delirium.flac
+40:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/04 - Better Than Sunday.flac
+41:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/05 - Another Runaway.flac
+42:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/06 - Love Don't Live Here.flac
+43:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/07 - Back of the Van.flac
+44:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/08 - Paris Is Burning.flac
+45:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/09 - Professional Suicide.flac
+46:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/10 - Dusk Till Dawn.flac
+47:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/11 - Crazy World.flac
+48:Ladyhawke/Ladyhawke - Ladyhawke (2008) [CD FLAC]/12 - Morning Dreams.flac
+49:Ludovico Einaudi/2006 - Divenire (Special Edition)/Disc 1/02 - Divenire.flac
+50:Ludovico Einaudi/2006 - Divenire (Special Edition)/Disc 1/06 - Primavera.flac
+51:Ludovico Einaudi/2006 - Divenire (Special Edition)/Disc 1/07 - Oltremare.flac
+52:Ludovico Einaudi/Ludovico Einaudi - 2001 - I giorni/1.06 - I giorni.flac
+53:Ludovico Einaudi/Ludovico Einaudi - Elements (Deluxe Edition) (2015) - WEB FLAC/01 - Petricor.flac
+54:Ludovico Einaudi/Ludovico Einaudi - Le Onde (1996) [FLAC]/02 - Le onde.flac
+55:Ludovico Einaudi/Ludovico Einaudi - Nightbook - 2009 (WEB - FLAC)/03. Nightbook.flac
+56:Ludovico Einaudi/Ludovico Einaudi - Nightbook - 2009 (WEB - FLAC)/13. Solo.flac
+57:Ludovico Einaudi/Ludovico Einaudi - Una Mattina - 2004 (WEB - FLAC)/01. Una Mattina.flac
+58:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/01 - Grace Kelly.flac
+59:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/02 - Lollipop.flac
+60:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/03 - My Interpretation.flac
+61:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/04 - Love Today.flac
+62:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/06 - Ring Ring.flac
+63:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/08 - Billy Brown.flac
+64:Mika/Mika - Life in Cartoon Motion (2007) [FLAC] {B0008352-02}/09 - Big Girl (You Are Beautiful).flac
+65:of Montreal/Of Montreal - Hissing Fauna, Are You the Destroyer (2007) [FLAC] {Bad News Records BNCP-152}/05 - Gronlandic Edit.flac
+66:of Montreal/Of Montreal - Hissing Fauna, Are You the Destroyer (2007) [FLAC] {Bad News Records BNCP-152}/11 - She's a Rejecter.flac
+67:of Montreal/of Montreal - Skeletal Lamping (2008) [FLAC]/15 of Montreal - Id Engager.flac
+68:of Montreal/of Montreal - Skeletal Lamping (2008) [FLAC]/07 of Montreal - Women's Studies Victims.flac
+69:of Montreal/of Montreal - Skeletal Lamping (2008) [FLAC]/Bonus CD [FLAC]/02 Id Engager (Mad Decent Remix).flac
+70:RED/Music/Eagles - One of These Nights (1975) - US Promo - 24.96 FLAC/04 - Journey of the Sorcerer.flac
+71:RED/Music/Eagles – Hotel California (1976) [Original US Pressing] {Vinyl Rip 24-96}/A1 Hotel California.flac
+72:RED/Music/Eagles – Hotel California (1976) [Original US Pressing] {Vinyl Rip 24-96}/A3 Life In The Fast Lane.flac
+73:Regina Spektor/Regina Spektor - 2009 - Far (Deluxe Edition) [FLAC]/01 - The Calculation.flac
+74:Regina Spektor/Regina Spektor - 2009 - Far (Deluxe Edition) [FLAC]/07 - Human Of The Yea.flac
+75:Regina Spektor/Regina Spektor - 2009 - Far (Deluxe Edition) [FLAC]/15 - The Sword & The Pen.flac
+76:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Everything I've Got.mp3
+77:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Blossom & Bee.mp3
+78:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Fly Away Birdie.mp3
+79:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - The Luckiest.mp3
+80:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Down With Love.mp3
+81:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Lucky To Be Me.mp3
+82:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Tea For Two.mp3
+83:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - I'm Old Fashioned.mp3
+84:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - So This Is Love.mp3
+85:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - The Lies Of Some Handsome Men.mp3
+86:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Some Of These Days.mp3
+87:Sara Gazarek/Blossom & Bee (2012)/Sara Gazarek - Unpack Your Adjectives.mp3
+88:Scott Pilgrim vs. The World/Various - Scott Pilgrim vs. The World (2010) [FLAC] {0343-2}/03 - Frank Black - I Heard Ramona Sing.flac
+89:Scott Pilgrim vs. The World/Various - Scott Pilgrim vs. The World (2010) [FLAC] {0343-2}/12 - Metric - Black Sheep.flac
+90:Scott Pilgrim vs. The World/Various - Scott Pilgrim vs. The World (2010) [FLAC] {0343-2}/17 - Beck - Ramona.flac
+playlist_end

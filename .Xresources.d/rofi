@@ -1,0 +1,9 @@
+! ------------------------- !
+! ----- Rofi Settings ----- !
+! ------------------------- !
+
+! ----- misc settings ----- !
+rofi.color-enabled: true
+rofi.modi: drun,run,window,ssh
+
+! vim: syntax=xdefaults :

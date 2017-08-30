@@ -1,0 +1,29 @@
+[user]
+    name = [git username]
+    email = [email]
+    signingkey = [signingkey]
+[core]
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+[help]
+	autocorrect = 1
+[color]
+    interactive = auto
+	status = auto
+	branch = auto
+    diff = auto
+[credential]
+	helper = cache --timeout=3600
+[alias]
+	lo = log --pretty=oneline
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+	cl = clone
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	ls = config --list
+	pom = push origin master
+[push]
+	default = simple

@@ -1,0 +1,83 @@
+! ------------------------- !
+! ----- Monokai Theme ----- !
+! ------------------------- !
+
+! -------------------------------- !
+! ----- Variable Definitions ----- !
+! -------------------------------- !
+
+! ----- normal colors ----- !
+#define base00 #36413E
+#define base01 #385248
+#define base02 #3E6150
+#define base03 #465A52
+#define base04 #466556
+#define base05 #596F68
+#define base06 #74897F
+#define base07 #2D453C
+
+! ----- bright colors ----- !
+#define base08 #2a3431
+#define base09 #273c40
+#define base0A #203030
+#define base0B #1E322E
+#define base0C #22312E
+#define base0D #253835
+#define base0E #1F412F
+#define base0F #6c827a
+
+! ----- special colors ----- !
+#define basefg #D8D9B4
+#define basebg #090F0F
+
+! ---------------------------- !
+! ----- terminal colours ----- !
+! ---------------------------- !
+
+! ----- special colors ----- !
+*foreground:	basefg
+*background:	basebg
+*cursorColor:	base0A
+
+! ----- normal colours ----- !
+*color0:	base00
+*color1:	base01
+*color2:	base02
+*color3:	base03
+*color4:	base04
+*color5:	base05
+*color6:	base06
+*color7:	base07
+
+! -----	bold colors ----- !
+*color8:	base08
+*color9:	base09
+*color10:	base0A
+*color11:	base0B
+*color12:	base0C
+*color13:	base0D
+*color14:	base0E
+*color15:	base0F
+
+! ------------------------------------- !
+! ----- Xresources URxvt Settings ----- !
+! ------------------------------------- !
+
+! ----- appearance settings ----- !
+URxvt*borderColor:		basebg
+URxvt*colorBD:			basefg
+URxvt*cursorColor:		basefg
+URxvt*cursorColor2:		base08
+URxvt.colorUL:          base06
+
+! ------------------------- !
+! ----- Rofi Settings ----- !
+! ------------------------- !
+
+! ----- theme settings ----- !
+rofi.color-window: basebg, basefg, basebg
+rofi.color-normal: basebg, base06, basebg, base0B, basefg
+rofi.color-active: base08, base06, base08, base08, basefg
+rofi.color-urgent: basefg, basebg, basefg, base0F, basebg
+
+! vim: set ft=xdefaults :

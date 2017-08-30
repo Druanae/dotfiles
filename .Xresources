@@ -1,0 +1,39 @@
+! ------------------------- !
+! ----- ~/.Xresources ----- !
+! ------------------------- !
+
+! ----- import external settings ----- !
+#include 	"~/.Xresources.d/urxvt"
+#include 	"~/.Xresources.d/rofi"
+#include 	"~/.Xresources.d/misc"
+#include 	"~/.Xresources.d/xft"
+#include    "~/.Xresources.d/green"
+
+! -------------------------------- !
+! ----- Variable Definitions ----- !
+! -------------------------------- !
+
+! ----- misc variables ----- !
+#define padding 10
+#define fonts xft:xos4 Terminess Powerline:pixelsize=12,\
+                xft:TerminessTTF Nerd Font:pixelsize=12,\
+                xft:FontAwesome:pixelsize=12,\
+                xft:siji:pixelsize=12,\
+                xft:Unifont:pixelsize=12
+
+
+! ------------------------------------- !
+! ----- Xresources URxvt Settings ----- !
+! ------------------------------------- !
+
+! ----- appearance settings ----- !
+URxvt*internalBorder:	padding
+
+! turn off scrollbar
+URxvt*scrollBar:	false
+
+! font options
+URxvt.font:				fonts
+URxvt.boldFont:			fonts
+URxvt.italicFont:		fonts
+URxvt.boldItalicFont:	fonts

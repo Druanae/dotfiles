@@ -1,0 +1,9 @@
+! -------------------------------------------- !
+! ----- Miscellaneous Xresources Options ----- !
+! -------------------------------------------- !
+
+! set Xcursor theme
+Xcursor.theme: Breeze_Default
+Xcursor.size: 16
+
+! vim: syntax=xdefaults :

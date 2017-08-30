@@ -1,0 +1,4 @@
+username = [lastfm username]
+password = [lastfm passsword]
+runas = mpd
+debug = 1

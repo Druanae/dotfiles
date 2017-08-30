@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Sprunge tool
+# Written by Sweets
+
+# http://sprunge.us - "command line pastebin" (also better than pastebin IMHO)
+
+if test -z "$1"
+then
+    echo "No file supplied. Check sprng -h"
+    exit 0
+fi
+
+if [[ "$1" == "-h" ]]
+then
+    echo ""
+    echo "sprng - Sprunge upload script by Sweets"
+    echo ""
+    echo "Usage: sprng /path/to/file"
+    echo ""
+    echo "Returns the sprunge link of the uploaded file."
+    echo "Adding the language's filetype as a query string to the end of a link adds syntax highlight"
+    echo "Example:"
+    echo "http://sprunge.us/example -> http://sprunge.us/example?py"
+    echo "Adding \"n-0\" as an anchor id to the end of a link goes to that line, but only if syntax highlighting is used."
+    echo "Example:"
+    echo "http://sprunge.us/example?py -> http://sprunge.us/example?py#n-29"
+    echo ""
+elif [[ -f "$1" ]]
+then
+    link=$(cat $1 | curl -F "sprunge=<-" http://sprunge.us)
+    echo $link
+else
+    echo "$1 is not a file"
+fi
+exit 0

@@ -1,0 +1,35 @@
+! ~/.Xresources
+! import external settings
+#include 	"/home/loki/.Xresources.d/theme"
+#include 	"/home/loki/.Xresources.d/urxvt"
+#include 	"/home/loki/.Xresources.d/rofi"
+#include 	"/home/loki/.Xresources.d/misc"
+#include 	"/home/loki/.Xresources.d/xft"
+
+! define variables
+#define myfg #c5c8c6
+#define mybg #1d1f21
+#define mypadding 10
+#define fonts xft:xos4 Terminess Powerline:pixelsize=12,\
+                xft:TerminessTTF Nerd Font:pixelsize=12,\
+                xft:FontAwesome:pixelsize=12,\
+                xft:siji:pixelsize=12,\
+                xft:Unifont:pixelsize=12
+
+
+! ~/.Xresources.d/urxvt
+URxvt*borderColor:	mybg
+URxvt*colorBD:		myfg
+URxvt*cursorColor:	myfg
+URxvt*cursorColor2:	mybg
+URxvt*internalBorder:	mypadding
+URxvt.font: fonts
+URxvt.boldFont: fonts
+URxvt.italicFont: fonts
+URxvt.boldItalicFont: fonts
+
+! ~/.Xresources.d/rofi
+rofi.color-window: mybg, myfg, mybg
+rofi.color-normal: mybg, myfg, mybg, #a7e22e, mybg
+rofi.color-active: #48483e, #93c029, #48483e, #8fc029, mybg
+rofi.color-urgent: myfg, mybg, myfg, #dc2566, myfg

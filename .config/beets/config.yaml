@@ -1,0 +1,3 @@
+directory: ~/Music            # The default library root directory.
+library: ~/Music/library.db   # The default library database file to use.
+

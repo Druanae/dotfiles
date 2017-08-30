@@ -1,0 +1,37 @@
+! ------------------------------------- !
+! ----- Xresources URxvt Settings ----- !
+! ------------------------------------- !
+
+! ----- miscellaneous settings ----- !
+URxvt.inLocale: en_GB.UTF-8
+URxvt.saveLines: 2048
+URxvt.cursorBlink: false
+URxvt.urgentOnBell: true
+URxvt.termName: xterm-256color
+URxvt.letterSpace: 1
+URxvt.geometry : 75x25
+
+! clickable URLs
+URxvt.perl-ext-common:	default,matcher
+URxvt.url-launcher:		/usr/bin/firefox
+URxvt.matcher.button:	1
+! open and last URL and list recent URLs
+! Ctrl-Delete opens last URL, Meta-Delete lists last 10 URLs
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+! yangable URLs
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! cause shell to be started as login shell
+URxvt*loginShell: true
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! vim: syntax=xdefaults :
