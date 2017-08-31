@@ -6,9 +6,9 @@
 [wallpaper](https://i.imgur.com/OWjfwGX.jpg)
 
 ## Specs
-`OS:`    Arch linux  
-`CPU:`   Intel i5-2520m 
-`GPU:`   Integrated
+`OS:`    Arch Linux  
+`CPU:`   Intel i5-2520m [4] @ 2.50GHz  
+`GPU:`   Integrated  
 `WM:`    [i3-gaps](https://github.com/Airblader/i3)  
 `Term:`  urxvt  
 `Font:`  Terminus  
@@ -26,3 +26,5 @@ Those files are:
 * .netrc
 
 ## Dependencies
+In this section I will be listing each config file and which piece of software they are specifically for.
+
