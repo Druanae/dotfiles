@@ -1,11 +1,12 @@
 # Loki~'s Dotfiles
 ## Screenshots - [wallpaper](https://i.imgur.com/OWjfwGX.jpg)
-![1](https://i.imgur.com/3C5G5Kf.png)\
-\[ top-Left: modified z3bra's [info.sh](http://pub.z3bra.org/monochromatic/misc/info.sh) | \[ bottom-left: terminal colours ] | \[ bottom-right: neofetch ] 
-![2](https://i.imgur.com/805OpCY.png)
-\[ left: ranger ] | \[ right: vim ]  
-![3](https://i.imgur.com/Gu8pLbB.png)
-\[ top: ncmpcpp ] | \[ bottom: cava ]  
+![1](https://i.imgur.com/3C5G5Kf.png)
+![2](https://i.imgur.com/805OpCY.png)  
+![3](https://i.imgur.com/Gu8pLbB.png) 
+### Software Shown:  
+`Screenshot 01:`  \[ top-Left: modified z3bra's [info.sh](http://pub.z3bra.org/monochromatic/misc/info.sh) | \[ bottom-left: terminal colours ] | \[ bottom-right: neofetch ]  
+`Screenshot 02:`  \[ left: ranger ] | \[ right: vim ]  
+`Screenshot 03:`  \[ top: ncmpcpp ] | \[ bottom: cava ]  
 
 ## Specs
 `OS:`    Arch Linux  
