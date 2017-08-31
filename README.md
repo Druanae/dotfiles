@@ -27,7 +27,7 @@ Those files are:
 
 ## Dependencies
 In this section I will be listing each config file and which piece of software they are specifically for.  
-In most cases I will link the git repo if available or the Arch Wiki page for software instead of their project pages as I find these are more informative.
+In most cases I will link the git repo if available or the Arch Wiki page for software instead of their project pages as I find these are more informative.  
 **config file** | **associated software** | description  
 ------------ | ------------- | -------------  
 .vimrc | [vim](https://wiki.archlinux.org/index.php/Vim) | Highly configurable CLI text editor.  
