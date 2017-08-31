@@ -29,7 +29,7 @@ Those files are:
 In this section I will be listing each config file and which piece of software they are specifically for.  
 In most cases I will link the git repo if available or the Arch Wiki page for software instead of their project pages as I find these are more informative.  
 
-**config file** | **associated software** | description  
+**config file** | **associated software** | __**description**__  
 ------------ | ------------- | -------------  
 .vimrc | [vim](https://wiki.archlinux.org/index.php/Vim) | Highly configurable CLI text editor.  
 .vim/ | [vim](https://wiki.archlinux.org/index.php/Vim) | Stores plugin files and colourschemes.  
