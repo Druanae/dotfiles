@@ -43,7 +43,7 @@ In most cases I will link the git repo if available or the Arch Wiki page for so
 .fdm.conf | [FDM](https://wiki.archlinux.org/index.php/fdm) | Fetches and Delivers my emails.  
 .bashrc | [bash](https://wiki.archlinux.org/index.php/Bash) | Bash user config file. Contains command aliases, exports, etc.  
 .scripts/rofi.sh | [rofi](https://wiki.archlinux.org/index.php/Rofi) | Script to run Rofi, a better replacement for dmenu. Including this because it's essential for my every day workflow.  
-.scrips/poomf.sh | custom | Script for taking screenshots and uploading them to a pomf clone. Bound to keys in i3's config for quick screenshot shortcuts.  
+.scrips/poomf.sh | none | Script for taking screenshots and uploading them to a pomf clone. Bound to keys in i3's config for quick screenshot shortcuts.  
 .scripts/poomf.sh | [sprunge](http://sprunge.us/) (NOT AN APPLICATION) | Custom script for quickly uploading files to the Sprunge website.
 .Xresources [Xresources](https://wiki.archlinux.org/index.php/x_resources) | Used to configure X applications such as URxvt's colours and font settings.  
 .Xresources.d/ | [Xresources](https://wiki.archlinux.org/index.php/x_resources) | Optional folder. Stores config files for individual applications and are linked in ~/.Xresources using `#include`  
