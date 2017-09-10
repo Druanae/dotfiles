@@ -1,0 +1,1 @@
+/home/loki/Git/bash-powerline/bash-powerline.sh

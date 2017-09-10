@@ -48,10 +48,14 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export LANG=en_GB.UTF-8
 export PATH="./local/bash:$PATH"
 export PAGER=less
+export NOUGAT_SCREENSHOT_DIRECTORY=/home/loki/Pictures/Screenshots
+
+# Source fonts
+source ~/.fonts/*.sh
 
 # History Options
-export HISTFILESIZE=20000
-export HISTSIZE=10000
+export HISTFILESIZE=2000
+export HISTSIZE=1000
 shopt -s histappend
 # Combine multiline commands into one in history.
 shopt -s cmdhist
@@ -72,6 +76,13 @@ eval "$(beet completion)"
 function parse_git_branch {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
+# Agnostic Powerline Theme
+export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
+if [[ -f $THEME ]]; then
+    export DEFAULT_USER=$(whoami)
+    source $THEME
+fi
 
 # Set tty colours
 sh ~/.scripts/ttycols.sh

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Misc
+BARHEIGHT=25
+EDGEWIDTH=5
+UNDERLINE_WIDTH=2
+
+# don"t touch.  edit width/height above instead.
+SCREENHEIGHT=$(xrandr -q | grep Screen | awk "{print $10}" | sed s/,//)
+SCREENWIDTH=$(xrandr -q | grep Screen | awk "{print $8}")
+BARWIDTH=$(($SCREENWIDTH - $(($EDGEWIDTH * 2))))
+
+# fonts
+font="-xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1"
+iconfont="-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+
+# colours
+c00="#073642" # Black
+c01="#dc322f" # Red
+c02="#859900" # Green
+c03="#b58900" # Yellow
+c04="#268bd2" # Blue
+c05="#d33682" # Magenta
+c06="#2aa198" # Cyan
+c07="#eee8d5" # White
+
+cFG="#839496" # Foreground
+cFG="#002b36" # Background
+
+# icons
+ICON_VOLFULL='\ue050'
+ICON_VOLZERO='\ue04e'
+ICON_VOLMUTE='\ue04f'
+ICON_MUSIC='\ue1a6'
+
+ICON_MAIL=
+
+LSEPRIGHT='\ue1ac'
+LSEPLEFT='\ue1aa'
+SEPRIGHT='\ue1ab'
+SEPLEFT='\ue1a9'
+
