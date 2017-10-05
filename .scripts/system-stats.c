@@ -34,6 +34,9 @@ static void cpu(char *);
   }
 
 int main(void) {
+  struct timespec tc = {0};
+  tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
+
   char all[VLA*10];
   char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA];
 
@@ -41,6 +44,12 @@ int main(void) {
   packs(p);
   kernel(k);
   ram(r);
+
+  // Have to iterate twice
+  cpu(c);
+  if (-1 == (nanosleep(&tc, NULL))) {
+    return EXIT_FAILURE;
+  }
   cpu(c);
 
   snprintf(all, VLA*10,
