@@ -99,10 +99,10 @@ static void
 packs(char *str1) {
   uint_fast16_t packages = 0;
 
-  //packages = glob_packages("/var/lib/pacman/local/*");
+  packages = glob_packages("/var/lib/pacman/local/*");
 
   //  Gentoo
-  packages = glob_packages("/var/db/pkg/*/*");
+  //packages = glob_packages("/var/db/pkg/*/*");
 
   snprintf(str1, VLA, "%"PRIuFAST16, packages);
 }
