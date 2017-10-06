@@ -74,7 +74,7 @@ taim(char *str1) {
 
   if (-1 == (t = time(NULL)) || 
       NULL == (taim = localtime(&t)) ||
-      0 == (strftime(time_str, VLA, "%b %d, %Y / %H:%M", taim))) {
+      0 == (strftime(time_str, VLA, "%b %d, %Y\n%H:%M", taim))) {
     EXIT();
   }
   FILL_ARR(str1, time_str);
