@@ -1,7 +1,7 @@
 /*
 Compile with:
 
-gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -W -Wshadow -Wconversion -Wpointer-arith -Wstrict-prototypes -Wformat=2 -Wmissing-prototypes -lasound -o stats system-stats.c
+gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -W -Wshadow -Wconversion -Wpointer-arith -Wstrict-prototypes -Wformat=2 -Wmissing-prototypes -lasound -lmpdclient -o stats system-stats.c
 */
 
 #include <time.h>
@@ -13,8 +13,10 @@ gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -
 #include <unistd.h>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
+#include <sys/statvfs.h>
 #include <glob.h>
 #include <alsa/asoundlib.h>
+#include <mpd/client.h>
 
 static void taim(char *);
 static void packs(char *);
@@ -23,9 +25,13 @@ static void kernel(char *);
 static void ram(char *);
 static void cpu(char *);
 static void volume(char *);
+static const char *shorten_stream(const char *);
+static void song(char *, int8_t);
+static void drive(char *);
 
 #define VLA 100
 #define MB 1048576
+#define GB 1073741824
 #define FILL_ARR(x, z) (snprintf(x, VLA, "%s", z))
 #define EXIT() (exit(EXIT_FAILURE))
 #define FMT_UINT "%"PRIuMAX
@@ -39,14 +45,16 @@ int main(void) {
   struct timespec tc = {0};
   tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
 
-  char all[VLA*10];
-  char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA];
+  char all[VLA*10], d[VLA];
+  char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA], s[VLA];
 
   taim(t);
   packs(p);
   kernel(k);
   ram(r);
   volume(v);
+  song(s, 0); // change the number to obtain different information
+  drive(d);
 
   // Have to iterate twice
   cpu(c);
@@ -56,8 +64,8 @@ int main(void) {
   cpu(c);
 
   snprintf(all, VLA*10,
-   "%s\npacks %s\n%s\nram %s%%\ncpu %s%%\nvol %s%%",
-    t, p, k, r, c, v
+   "%s\n%s\npacks %s\n%s\nram %s%%\ncpu %s%%\ndrive %s%%\nvol %s%%",
+    s, t, p, k, r, c, d, v
   );
 
   if (!puts(all)) {
@@ -231,4 +239,78 @@ error:
     snd_mixer_close(handle);
   }
   EXIT();
+}
+
+static const char *
+shorten_stream(const char *str1) {
+  const char *stream = str1;
+
+  if (5 < (strlen(stream))) {
+    if (0 == (strncmp(stream, "http", 4))) {
+      stream = "..";
+    }
+  }
+  return stream;
+}
+
+static void
+song(char *str1, int8_t num) {
+
+  struct mpd_connection *conn = NULL;
+  struct mpd_song *song = NULL;
+  const char *stream = NULL, *taggy = NULL;
+  static const int8_t tagz_arr[] = {
+    0,
+    MPD_TAG_TRACK,
+    MPD_TAG_ARTIST,
+    MPD_TAG_TITLE,
+    MPD_TAG_ALBUM,
+    MPD_TAG_DATE
+  };
+
+  *str1 = '\0';
+  if (NULL == (conn = mpd_connection_new(NULL, 0, 0))) {
+    return;
+  }
+  if (!(mpd_send_command(conn, "currentsong", NULL)) ||
+      0 != (mpd_connection_get_error(conn))) {
+    goto error;
+  }
+  if (NULL == (song = mpd_recv_song(conn))) {
+    goto error;
+  }
+
+  if (6 != num) {
+    taggy = mpd_song_get_tag(song, tagz_arr[num], 0);
+    if (NULL != taggy) {
+      FILL_ARR(str1, taggy);
+    }
+  } else {
+    if (NULL != (stream = mpd_song_get_uri(song))) {
+      FILL_ARR(str1, (shorten_stream(stream)));
+    }
+  }
+
+error:
+  if (NULL != song) {
+    mpd_song_free(song);
+  }
+  if (NULL != conn) {
+    mpd_connection_free(conn);
+  }
+  return;
+}
+
+static void
+drive(char *str1) {
+  uintmax_t val = 0;
+  struct statvfs drive;
+  memset(&drive, 0, sizeof(struct statvfs));
+
+  if (-1 == (statvfs(getenv("HOME"), &drive))) {
+    EXIT();
+  }
+
+  val = (uintmax_t)((drive.f_blocks - drive.f_bfree) * drive.f_bsize) / GB;
+  snprintf(str1, VLA, "%"PRIuMAX, val);
 }
