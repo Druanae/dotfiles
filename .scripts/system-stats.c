@@ -312,5 +312,5 @@ drive(char *str1) {
   }
 
   val = (uintmax_t)((drive.f_blocks - drive.f_bfree) * drive.f_bsize) / GB;
-  snprintf(str1, VLA, "%"PRIuMAX, val);
+  snprintf(str1, VLA, FMT_UINT, val);
 }
