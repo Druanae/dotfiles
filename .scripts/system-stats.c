@@ -1,7 +1,7 @@
 /*
 Compile with:
 
-gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -W -Wshadow -Wconversion -Wpointer-arith -Wstrict-prototypes -Wformat=2 -Wmissing-prototypes -o stats system-stats.c
+gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -W -Wshadow -Wconversion -Wpointer-arith -Wstrict-prototypes -Wformat=2 -Wmissing-prototypes -lasound -o stats system-stats.c
 */
 
 #include <time.h>
@@ -14,6 +14,7 @@ gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
 #include <glob.h>
+#include <alsa/asoundlib.h>
 
 static void taim(char *);
 static void packs(char *);
@@ -21,6 +22,7 @@ static uint_fast16_t glob_packages(const char *);
 static void kernel(char *);
 static void ram(char *);
 static void cpu(char *);
+static void volume(char *);
 
 #define VLA 100
 #define MB 1048576
@@ -38,12 +40,13 @@ int main(void) {
   tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
 
   char all[VLA*10];
-  char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA];
+  char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA];
 
   taim(t);
   packs(p);
   kernel(k);
   ram(r);
+  volume(v);
 
   // Have to iterate twice
   cpu(c);
@@ -53,8 +56,8 @@ int main(void) {
   cpu(c);
 
   snprintf(all, VLA*10,
-   "%s packs %s %s ram %s%% cpu %s%%",
-    t, p, k, r, c
+   "%s\npacks %s\n%s\nram %s%%\ncpu %s%%\nvol %s%%",
+    t, p, k, r, c, v
   );
 
   if (!puts(all)) {
@@ -96,10 +99,10 @@ static void
 packs(char *str1) {
   uint_fast16_t packages = 0;
 
-  packages = glob_packages("/var/lib/pacman/local/*");
+  //packages = glob_packages("/var/lib/pacman/local/*");
 
   //  Gentoo
-  // packages = glob_packages("/var/db/pkg/*/*");
+  packages = glob_packages("/var/db/pkg/*/*");
 
   snprintf(str1, VLA, "%"PRIuFAST16, packages);
 }
@@ -173,4 +176,59 @@ cpu(char *str1) {
   }
 
   snprintf(str1, VLA, FMT_UINT, percent);
+}
+
+static void 
+volume(char *str1) {
+  snd_mixer_t *handle = NULL;
+  snd_mixer_elem_t *elem = NULL;
+  snd_mixer_selem_id_t *s_elem = NULL;
+  long int vol = 0L, max = 0L, min = 0L;
+
+  if (0 != (snd_mixer_open(&handle, 0))) {
+    EXIT();
+  }
+
+  if (0 != (snd_mixer_attach(handle, "default"))) {
+    goto error;
+  }
+
+  if (0 != (snd_mixer_selem_register(handle, NULL, NULL))) {
+    goto error;
+  }
+
+  if (0 != (snd_mixer_load(handle))) {
+    goto error;
+  }
+
+  snd_mixer_selem_id_malloc(&s_elem);
+  if (NULL == s_elem) {
+    goto error;
+  }
+
+  snd_mixer_selem_id_set_name(s_elem, "Master");
+  if (NULL == (elem = snd_mixer_find_selem(handle, s_elem))) {
+    goto error;
+  }
+
+  if (0 != (snd_mixer_selem_get_playback_volume(elem, 0, &vol))) {
+    goto error;
+  }
+  snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
+
+  snd_mixer_selem_id_free(s_elem);
+  snd_mixer_close(handle);
+
+  snprintf(str1, VLA, "%ld", 
+    ((0 != max) ? ((vol * 100) / max) : 0L));
+  return;
+
+error:
+  if (NULL != s_elem) {
+    snd_mixer_selem_id_free(s_elem);
+  }
+  if (NULL != handle) {
+    snd_mixer_close(handle);
+  }
+  EXIT();
 }
