@@ -16,7 +16,7 @@ gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -
 #include <sys/statvfs.h>
 #include <glob.h>
 #include <alsa/asoundlib.h>
-/* #include <mpd/client.h> */
+#include <mpd/client.h>
 
 static void taim(char *);
 static void packs(char *);
@@ -29,6 +29,7 @@ static const char *shorten_stream(const char *);
 static void song(char *, int8_t);
 static void drive(char *);
 static void loads(char *);
+static void up(char *);
 
 #define VLA 50
 #define MB 1048576
@@ -46,7 +47,7 @@ int main(void) {
   struct timespec tc = {0};
   tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
 
-  char all[VLA*10], d[VLA], l[VLA];
+  char all[VLA*10], d[VLA], l[VLA], u[VLA];
   char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA], s[VLA];
 
   taim(t);
@@ -57,6 +58,7 @@ int main(void) {
   song(s, 0); // change the number to obtain different information
   drive(d);
   loads(l);
+  up(u);
 
   // Have to iterate twice
   cpu(c);
@@ -68,6 +70,7 @@ int main(void) {
   snprintf(all, VLA*10,
    "%s\n"
    "load %s\n"
+   "up %s\n"
    "%s\n"
    "packs %s\n"
    "%s\n"
@@ -75,7 +78,7 @@ int main(void) {
    "cpu %s%%\n"
    "drive %s%%\n"
    "vol %s%%",
-    s, l, t, p, k, r, c, d, v
+    s, l, u, t, p, k, r, c, d, v
   );
 
   if (!puts(all)) {
@@ -339,4 +342,33 @@ loads(char *str1) {
     (float)l.loads[1] / 65535.0f,
     (float)l.loads[2] / 65535.0f
   );
+}
+
+static void
+up(char *str1) {
+  uintmax_t now = 0;
+  struct timespec tc = {0};
+
+  if (-1 == clock_gettime(CLOCK_BOOTTIME, &tc)) {
+    EXIT();
+  }
+
+  now = (uintmax_t)tc.tv_sec;
+
+  if (0 != (now / 86400)) { /* days */
+    snprintf(str1, VLA, FMT_UINT "d " FMT_UINT "h " FMT_UINT "m",
+      (now / 86400),
+      ((now / 3600) % 24),
+      ((now / 60) % 60));
+    return;
+  }
+  if (59 < (now / 60)) { /* hours */
+    snprintf(str1, VLA, FMT_UINT "h " FMT_UINT "m",
+      ((now / 3600) % 24),
+      ((now / 60) % 60));
+    return;
+  }
+
+  /* less than 1 hour */
+  snprintf(str1, VLA, FMT_UINT "m", ((now / 60) % 60));
 }
