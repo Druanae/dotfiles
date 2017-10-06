@@ -16,7 +16,7 @@ gcc -Wall -O2 -Wextra -Wundef -Wwrite-strings -Wcast-align -Wstrict-overflow=5 -
 #include <sys/statvfs.h>
 #include <glob.h>
 #include <alsa/asoundlib.h>
-#include <mpd/client.h>
+/* #include <mpd/client.h> */
 
 static void taim(char *);
 static void packs(char *);
@@ -28,8 +28,9 @@ static void volume(char *);
 static const char *shorten_stream(const char *);
 static void song(char *, int8_t);
 static void drive(char *);
+static void loads(char *);
 
-#define VLA 100
+#define VLA 50
 #define MB 1048576
 #define GB 1073741824
 #define FILL_ARR(x, z) (snprintf(x, VLA, "%s", z))
@@ -45,7 +46,7 @@ int main(void) {
   struct timespec tc = {0};
   tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
 
-  char all[VLA*10], d[VLA];
+  char all[VLA*10], d[VLA], l[VLA];
   char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA], s[VLA];
 
   taim(t);
@@ -55,6 +56,7 @@ int main(void) {
   volume(v);
   song(s, 0); // change the number to obtain different information
   drive(d);
+  loads(l);
 
   // Have to iterate twice
   cpu(c);
@@ -64,8 +66,16 @@ int main(void) {
   cpu(c);
 
   snprintf(all, VLA*10,
-   "%s\n%s\npacks %s\n%s\nram %s%%\ncpu %s%%\ndrive %s%%\nvol %s%%",
-    s, t, p, k, r, c, d, v
+   "%s\n"
+   "load %s\n"
+   "%s\n"
+   "packs %s\n"
+   "%s\n"
+   "ram %s%%\n"
+   "cpu %s%%\n"
+   "drive %s%%\n"
+   "vol %s%%",
+    s, l, t, p, k, r, c, d, v
   );
 
   if (!puts(all)) {
@@ -313,4 +323,20 @@ drive(char *str1) {
 
   val = (uintmax_t)((drive.f_blocks - drive.f_bfree) * drive.f_bsize) / GB;
   snprintf(str1, VLA, FMT_UINT, val);
+}
+
+static void
+loads(char *str1) {
+  struct sysinfo l;
+  memset(&l, 0, sizeof(struct sysinfo));
+
+  if (-1 == (sysinfo(&l))) {
+    EXIT();
+  }
+
+  snprintf(str1, VLA, "%.2f %.2f %.2f",
+    (float)l.loads[0] / 65535.0f,
+    (float)l.loads[1] / 65535.0f,
+    (float)l.loads[2] / 65535.0f
+  );
 }
