@@ -25,8 +25,7 @@ static void kernel(char *);
 static void ram(char *);
 static void cpu(char *);
 static void volume(char *);
-static const char *shorten_stream(const char *);
-static void song(char *, int8_t);
+static void song(char *);
 static void drive(char *);
 static void loads(char *);
 static void up(char *);
@@ -57,7 +56,7 @@ int main(void) {
   kernel(k);
   ram(r);
   volume(v);
-  song(s, 0); // change the number to obtain different information
+  song(s);
   drive(d);
   loads(l);
   up(u);
@@ -258,32 +257,19 @@ error:
   EXIT();
 }
 
-static const char *
-shorten_stream(const char *str1) {
-  const char *stream = str1;
-
-  if (5 < (strlen(stream))) {
-    if (0 == (strncmp(stream, "http", 4))) {
-      stream = "..";
-    }
-  }
-  return stream;
-}
-
 static void
-song(char *str1, int8_t num) {
+song(char *str1) {
 
   struct mpd_connection *conn = NULL;
   struct mpd_song *song = NULL;
-  const char *stream = NULL, *taggy = NULL;
-  static const int8_t tagz_arr[] = {
-    0,
-    MPD_TAG_TRACK,
-    MPD_TAG_ARTIST,
-    MPD_TAG_TITLE,
-    MPD_TAG_ALBUM,
-    MPD_TAG_DATE
-  };
+  const char *s1 = NULL, *s2 = NULL;
+
+  // Available tags
+  // MPD_TAG_TRACK
+  // MPD_TAG_ARTIST
+  // MPD_TAG_TITLE
+  // MPD_TAG_ALBUM
+  // MPD_TAG_DATE
 
   *str1 = '\0';
   if (NULL == (conn = mpd_connection_new(NULL, 0, 0))) {
@@ -297,14 +283,11 @@ song(char *str1, int8_t num) {
     goto error;
   }
 
-  if (6 != num) {
-    taggy = mpd_song_get_tag(song, tagz_arr[num], 0);
-    if (NULL != taggy) {
-      FILL_ARR(str1, taggy);
-    }
-  } else {
-    if (NULL != (stream = mpd_song_get_uri(song))) {
-      FILL_ARR(str1, (shorten_stream(stream)));
+  s1 = mpd_song_get_tag(song, MPD_TAG_TITLE, 0);
+  if (NULL != s1) {
+    s2 = mpd_song_get_tag(song, MPD_TAG_ARTIST, 0);
+    if (NULL != s2) {
+      snprintf(str1, VLA, "%s %s", s1, s2);
     }
   }
 
