@@ -30,6 +30,7 @@ static void song(char *, int8_t);
 static void drive(char *);
 static void loads(char *);
 static void up(char *);
+static void voltage(char *);
 
 #define VLA 50
 #define MB 1048576
@@ -37,6 +38,7 @@ static void up(char *);
 #define FILL_ARR(x, z) (snprintf(x, VLA, "%s", z))
 #define EXIT() (exit(EXIT_FAILURE))
 #define FMT_UINT "%"PRIuMAX
+#define VOLTAGE_FILE(x) ("/sys/class/hwmon/hwmon0/in"x"_input")
 
 #define CLOSE_FP(fp) \
   if (EOF == (fclose(fp))) { \
@@ -47,7 +49,7 @@ int main(void) {
   struct timespec tc = {0};
   tc.tv_nsec = sysconf(_SC_CLK_TCK) * 1000000L;
 
-  char all[VLA*10], d[VLA], l[VLA], u[VLA];
+  char all[VLA*10], d[VLA], l[VLA], u[VLA], vl[VLA];
   char t[VLA], p[VLA], k[VLA], r[VLA], c[VLA], v[VLA], s[VLA];
 
   taim(t);
@@ -59,6 +61,7 @@ int main(void) {
   drive(d);
   loads(l);
   up(u);
+  voltage(vl);
 
   // Have to iterate twice
   cpu(c);
@@ -77,8 +80,9 @@ int main(void) {
    "ram %s%%\n"
    "cpu %s%%\n"
    "drive %s%%\n"
+   "voltage %s\n"
    "vol %s%%",
-    s, l, u, t, p, k, r, c, d, v
+    s, l, u, t, p, k, r, c, d, vl, v
   );
 
   if (!puts(all)) {
@@ -371,4 +375,34 @@ up(char *str1) {
 
   /* less than 1 hour */
   snprintf(str1, VLA, FMT_UINT "m", ((now / 60) % 60));
+}
+
+static void
+voltage(char *str1) {
+  float voltage[4];
+  FILE *fp = NULL;
+  uint8_t x = 0;
+  memset(voltage, 0, sizeof(voltage));
+
+  const char *voltage_files[] = {
+    VOLTAGE_FILE("0"),
+    VOLTAGE_FILE("1"),
+    VOLTAGE_FILE("2"),
+    VOLTAGE_FILE("3")
+  };
+
+  for (x = 0; x < 4; x++) {
+    if (NULL == (fp = fopen(voltage_files[x], "r"))) {
+      EXIT();
+    }
+    if(EOF == (fscanf(fp, "%f", &voltage[x]))) {
+      EXIT();
+    }
+    CLOSE_FP(fp);
+
+    voltage[x] /= 1000.0f;
+  }
+
+  snprintf(str1, VLA, "%.2f %.2f %.2f %.2f",
+    voltage[0], voltage[1], voltage[2], voltage[3]);
 }
